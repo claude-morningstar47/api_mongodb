@@ -1,0 +1,1 @@
+{"version":"1.0.0","name":"crud_auth_api","dependencies":{"bcryptjs":{"version":"2.4.3"},"cors":{"version":"2.8.5"},"dotenv":{"version":"16.0.3"},"express":{"version":"4.18.2"},"jsonwebtoken":{"version":"9.0.0"},"mongoose":{"version":"7.0.3"},"morgan":{"version":"1.10.0"}}}
