@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const verifyAuth = require("../middleware/verifyAuth");
 
-// POST | /api/v1/register | public | register user
+//* POST | /api/v1/register | public | register user
 router.post("/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -34,7 +34,7 @@ router.post("/register", async (req, res) => {
     user.password = await bcrypt.hash(password, slat);
     await user.save();
 
-    // payload || {id: user._id}
+    //! payload || {id: user._id}
     jwt.sign(
       { id: user._id },
       process.env.JWT_SECRET,
@@ -54,7 +54,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// POST api/v1/login | public | login exiting user
+//* POST api/v1/login | public | login exiting user
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -95,7 +95,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// GET api/v1/user | private | get logged in user for the process of auth
+//* GET api/v1/user | private | get logged in user for the process of auth
 router.get("/user", verifyAuth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).populate({
