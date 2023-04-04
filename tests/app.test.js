@@ -42,6 +42,7 @@ describe("POST /api/v1/register", () => {
     // Clean up: delete the user from the database
     await existingUser.remove();
   });
+  // cd ne fonctionne pas !
 
   it("should return status 400 when there is a server error", async () => {
     jest.spyOn(User, "findOne").mockImplementationOnce(() => {
