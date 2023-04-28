@@ -16,9 +16,11 @@ app.use("/api/v1", require("./src/routes/posts"));
 app.use("/api/v1", require("./src/routes/auth"));
 app.use("/api/v1", require("./src/routes/features"));
 
-app.use(({ res }) => {
-  const msg = "route introuvable";
-  res.status(404).json({ msg });
+// ERROR HANDLING MIDDLEWARE
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ msg: "Internal Server Error" });
 });
-PORT = process.env.PORT || 5000;
+
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, console.log(`SERVER RUNNING ON PORT: ${PORT}`));

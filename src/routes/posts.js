@@ -89,7 +89,7 @@ router.put("/edit-post/:id", verifyAuth, async (req, res) => {
         success: false,
       });
     }
-    if (!post.UserId == req.user.id) {
+    if (!(post.UserId == req.user.id)) {
       return res.status(400).json({
         success: false,
       });
@@ -110,6 +110,43 @@ router.put("/edit-post/:id", verifyAuth, async (req, res) => {
     res.status(400).json({ success: false });
   }
 });
+
+// PUT | /api/v1/post/edit-post/:id| Private | Edit a post
+// router.put("/edit-post/:id", verifyAuth, async (req, res) => {
+//   try {
+//     const post = await Post.findById(req.params.id);
+//     if (!post) {
+//       return res.status(404).json({
+//         success: false,
+//         message: "Post not found.",
+//       });
+//     }
+//     if (!(post.userId !== req.user.id)) {
+//       return res.status(401).json({
+//         success: false,
+//         message: "You are not authorized to edit this post.",
+//       });
+//     } else {
+//       const { title, description, image_url } = req.body;
+//       post.title = title || post.title;
+//       post.description = description || post.description;
+//       post.post_image = image_url || post.post_image;
+//       await post.save();
+//       res.status(200).json({
+//         success: true,
+//         data: {
+//           id: post._id,
+//           title: post.title,
+//           description: post.description,
+//           post_image: post.post_image,
+//         },
+//       });
+//     }
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json({ success: false });
+//   }
+// });
 
 // DELETE | /api/v1/post/delete-post/:id | Private | delete a post
 router.delete("/delete-post/:id", verifyAuth, async (req, res) => {
