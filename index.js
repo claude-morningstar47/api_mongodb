@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev")); // for logging
 
-// ROUTES
+// ROUTES log
 app.use("/api/v1", require("./src/routes/posts"));
 app.use("/api/v1", require("./src/routes/auth"));
 app.use("/api/v1", require("./src/routes/features"));
