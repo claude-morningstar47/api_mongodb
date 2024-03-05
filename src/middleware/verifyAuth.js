@@ -6,6 +6,7 @@ module.exports = (req, res, next) => {
       msg: "no Token, access denied",
       success: false,
     });
+    // test
   }
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
